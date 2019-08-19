@@ -1,0 +1,28 @@
+#title {
+  //text-shadow: 2px 2px 4px grey;
+  margin-top: 1em;
+}
+
+hr {
+  border-top: 3px solid #0099d7;
+  margin-bottom: 1.5em;
+}
+
+tr:hover:not(:nth-child(1)) {
+  border: 2px solid #0099d7;
+  cursor: pointer;
+}
+
+.container {
+  margin-top: 1em;
+  margin-bottom: 3em;
+}
+
+table {
+  width: 90%;
+}
+
+button {
+  margin-top: 1em;
+  margin-right: 1em;
+}

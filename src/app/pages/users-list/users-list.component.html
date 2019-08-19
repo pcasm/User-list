@@ -1,0 +1,201 @@
+<div class="container">
+  <h1 id="title">List of users
+    <hr>
+  </h1>
+  <h5>Select a user from the list to view full details below, or enter a new user in the form.</h5>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+      <tr *ngFor='let item of this.users' (click)="itemSelected(item)">
+        <td>{{item.name}}</td>
+        <td>{{item.username}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.phone}}</td>
+        <!--<td>{{item | formattedAddress}}</td>-->
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="container">
+  <form (ngSubmit)="onSubmit()" #UserForm="ngForm"
+        novalidate>
+
+    <div class="row justify-content-center">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" name="name" id="name" maxlength="25" required
+                 [(ngModel)]="current_name" #name="ngModel" [disabled]="this.showingItem">
+          <div [hidden]="name.valid || !name.touched || this.showingItem" class="alert alert-danger">
+            Name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" name="username" id="username" maxlength="10" required
+                 [(ngModel)]="current_username" #username="ngModel" [disabled]="this.showingItem">
+          <div [hidden]="username.valid || !username.touched || this.showingItem" class="alert alert-danger">
+            Username is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" name="email" id="email" maxlength="15" required
+                 [(ngModel)]="current_email" #email="ngModel" [disabled]="this.showingItem">
+          <div [hidden]="email.valid || !email.touched || this.showingItem" class="alert alert-danger">
+            Email is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="street">Street</label>
+          <input type="text" class="form-control" name="street" id="street" maxlength="15" required
+                 [(ngModel)]="current_street" #street="ngModel" [disabled]="this.showingItem">
+          <div [hidden]="street.valid || !street.touched || this.showingItem" class="alert alert-danger">
+            Street is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="suite">Suite</label>
+          <input type="text" class="form-control" name="suite" id="suite" maxlength="8" required
+                 [(ngModel)]="current_suite" #suite="ngModel" [disabled]="this.showingItem">
+          <div [hidden]="suite.valid || !suite.touched || this.showingItem" class="alert alert-danger">
+            Suite is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" class="form-control" name="city" id="city" maxlength="10" required
+                 [(ngModel)]="current_suite" #city="ngModel" [disabled]="this.showingItem">
+          <div [hidden]="suite.valid || !city.touched || this.showingItem" class="alert alert-danger">
+            City is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="zip">ZIP</label>
+          <input type="text" class="form-control" name="zip" id="zip" maxlength="5" required
+                 [(ngModel)]="current_zip" #zip="ngModel" [disabled]="this.showingItem">
+          <div [hidden]="zip.valid || !zip.touched || this.showingItem" class="alert alert-danger">
+            ZIP code is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" class="form-control" name="phone" id="phone" maxlength="10" required
+                 [(ngModel)]="current_phone" #phone="ngModel" [disabled]="this.showingItem">
+          <div [hidden]="phone.valid || !phone.touched || this.showingItem" class="alert alert-danger">
+            Phone is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="website">Website</label>
+          <input type="text" class="form-control" name="website" id="website" maxlength="15" required
+                 [(ngModel)]="current_website" #website="ngModel" [disabled]="this.showingItem">
+          <div [hidden]="website.valid || !website.touched || this.showingItem" class="alert alert-danger">
+            Website is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="company_name">Company name</label>
+          <input type="text" class="form-control" name="company_name" id="company_name" maxlength="15" required
+                 [(ngModel)]="current_company_name" #company_name="ngModel"
+                 [disabled]="this.showingItem">
+          <div [hidden]="company_name.valid || !company_name.touched || this.showingItem" class="alert alert-danger">
+            Company name is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="company_bs">Comapany BS</label>
+          <input type="text" class="form-control" name="company_bs" id="company_bs" maxlength="30" required
+                 [(ngModel)]="current_company_bs" #company_bs="ngModel"
+                 [disabled]="this.showingItem">
+          <div [hidden]="company_bs.valid || !company_bs.touched || this.showingItem" class="alert alert-danger">
+            Company BS is required
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="company_catch_phrase">Comapany Catch Phrase</label>
+          <input type="text" class="form-control" name="company_catch_phrase" id="company_catch_phrase" maxlength="30" required
+                 [(ngModel)]="current_company_catch_phrase" #company_catch_phrase="ngModel"
+                 [disabled]="this.showingItem">
+          <div [hidden]="company_catch_phrase.valid || !company_catch_phrase.touched || this.showingItem"
+               class="alert alert-danger">
+            Company Catch Phrase is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div style="margin-left: 1em;">
+        <div>
+          <button type="button" class="btn btn-outline-secondary btn-md" *ngIf="this.showingItem"
+                  (click)="UserForm.reset(); this.showingItem = false;">
+            Back to new address
+          </button>
+          <button type="submit" class="btn btn-outline-success btn-md" *ngIf="!this.showingItem"
+                  [disabled]="UserForm.invalid">
+            Save as a new address
+          </button>
+          <button type="button" class="btn btn-outline-danger btn-md" *ngIf="this.showingItem"
+                  (click)="this.deleteUser(); showingItem = false">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="!this.showingItem" style="margin-left: 1em; margin-top: 0.5em;">
+      <span>All fields are required</span>
+    </div>
+  </form>
+</div>
